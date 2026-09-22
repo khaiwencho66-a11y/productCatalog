@@ -1,13 +1,16 @@
 import {
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
-import BottomNavBar from './src/navigation/BottomNavBar';
+import MainStack from './src/navigation/MainStack';
+import { NavigationContainer } from '@react-navigation/native';
 
 function App() {
 
   return (
     <SafeAreaProvider>
-      <BottomNavBar />
+      <NavigationContainer>
+        <MainStack />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
