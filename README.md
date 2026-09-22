@@ -1,4 +1,4 @@
-Notes:
+# Notes:
 Setup environment:
 RN version 0.83.9
 node version 20.19.4
@@ -9,6 +9,45 @@ node version 20.19.4
 # Product Catalog App:
 1. Product List
 2. Product detail
+
+# TODOs — list
+1. Thumbnail for image (willing to do a modal to display image first before navigate to product detail page & display onclick display product image)
+2. product detail display list of image (some product have more than 1 image)
+3. loading indicator for page loading while it is empty and loading the data behind
+4. States — implement and visually distinguish: loading, error (with a **retry** button), empty, and success
+5. replace a product icon at bottom nav bar
+6. need to solve issue on ScrollView cannot use together with FlatList (Product Detail line 128-151). Cause issue of:
+VirtualizedLists should never be nested inside plain ScrollViews with the same orientation because it can break windowing and other functionality - use another VirtualizedList-backed container instead. Error Stack: ...
+
+# Function/Feature
+1. Product List
+-able to search by product name, and need to click on the search button
+-by default diaply 20 product, scroll down to load more (20 + 20 = 40 display)
+-scroll back to top and can pull to refresh page
+-onclick product to redirect to product detail page
+
+2. Product Detail page
+-have a back button to go back to Product List
+-display product image and product detail such as title, price, description, specification (i pcik some from the detail: availability status, stock, brand, weight, dimension), Service (pick: warranty info, shipping info, return policy), rating
+
+# AI usage
+1. Navigator/Navigation setup at App.tsx and how the MainStack and BottomNavbar setup works
+-include file: App.tsx, MainStack.tsx, BottomNavBar
+2. on endreached use in flatlist react native
+
+# reference:
+https://react.dev/reference/react/useEffect
+
+https://devtrium.com/posts/async-functions-useeffect
+
+https://reactnative.dev/docs/flatlist#example
+
+https://reactnative.dev/docs/textinput
+
+# Working time
+-Used like 3 hours 08 min++ to finish. 
+-Init setup like create project, then use above 3 hours+ to setting environment due to first time implement in own laptop
+
 
 # ------------------------------
 # DEFAULT GENERATED NOTE
