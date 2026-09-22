@@ -17,6 +17,7 @@ export default function MainStack() {
             <Stack.Screen
                 name="ProductDetail"
                 component={ProductDetailScreen}
+                options={{ headerShown: false }}
             />
         </Stack.Navigator>
     );

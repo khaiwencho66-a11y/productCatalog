@@ -4,7 +4,7 @@ import { loadProductList, searchProduct } from "../actions/productAction";
 import FastImage from "@d11/react-native-fast-image";
 
 
-const ProductListScreen= ({}: any) => {
+const ProductListScreen= ({navigation}: any) => {
     const [productList, setProductList] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
@@ -13,7 +13,7 @@ const ProductListScreen= ({}: any) => {
     const [isSearch, setIsSearch] = useState(false);
 
     useEffect(()=>{
-        console.log('1. loadProductList...');
+        // console.log('1. loadProductList...');
         const getProductList = async() => {
             try{
                 const data = await loadProductList(1);
@@ -27,7 +27,7 @@ const ProductListScreen= ({}: any) => {
     }, []);
 
     const loadMore=async()=> {
-        console.log('2. loadMore...');
+        // console.log('2. loadMore...');
         if(loading || isSearch) {
             return;
         }
@@ -49,7 +49,7 @@ const ProductListScreen= ({}: any) => {
     }
 
     const onRefresh=async()=> {
-        console.log('3. onRefresh...');
+        // console.log('3. onRefresh...');
         setIsRefresh(true);
 
         setProductList([]);
@@ -72,7 +72,7 @@ const ProductListScreen= ({}: any) => {
             setPage(1);
         }
         try{
-            console.log('isSearching:', isSearch);
+            // console.log('isSearching:', isSearch);
             setIsSearch(true);
             const data = await searchProduct(text);
             setProductList(data);
@@ -102,13 +102,19 @@ const ProductListScreen= ({}: any) => {
                 numColumns={2}
                 renderItem={({item})=>(
                     <View style={styles.productContainer}>
-                        <View>
-                            <FastImage source={{uri: item.images[0]}} style={styles.imageSize}/>
-                        </View>
-                        <View style={styles.labelContainer}>
-                            <Text style={styles.labelTitle}>{item.title}</Text>
-                            <Text style={styles.labelPrice}>RM {item.price}</Text>
-                        </View>
+                        <TouchableOpacity onPress={()=> {
+                            navigation.getParent()?.navigate('ProductDetail', {
+                                selectedId: item.id,
+                            });
+                        }}>
+                            <View>
+                                <FastImage source={{uri: item.images[0]}} style={styles.imageSize}/>
+                            </View>
+                            <View style={styles.labelContainer}>
+                                <Text style={styles.labelTitle}>{item.title}</Text>
+                                <Text style={styles.labelPrice}>RM {item.price}</Text>
+                            </View>
+                        </TouchableOpacity>
                     </View>
                 )}
                 refreshing={isRefresh}
@@ -139,6 +145,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor:'#d3d3d3',
         alignItems:'center',
+        backgroundColor: '#fff'
         // paddingHorizontal: 5
     },
     productContainer: {

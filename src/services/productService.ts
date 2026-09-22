@@ -10,3 +10,8 @@ export const getSearchProduct = async(seachText:string) => {
     // console.log('service > res searchProductName > response:', response.json());
     return await response.json();
 }
+
+export const getProductDetail = async(id:number) => {
+    const response = await fetch(`https://dummyjson.com/products/${id}`);
+    return await response.json();
+}

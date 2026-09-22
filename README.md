@@ -6,10 +6,11 @@ node version 20.19.4
 -using React Native CLI to create.
 -use "npm install" to install dependencies and use "npx react-native run-android" to run.
 
-Product Catalog App:
+# Product Catalog App:
 1. Product List
 2. Product detail
 
+# ------------------------------
 # DEFAULT GENERATED NOTE
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 

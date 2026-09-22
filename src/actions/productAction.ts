@@ -1,4 +1,4 @@
-import { getProductList, getSearchProduct } from "../services/productService"
+import { getProductDetail, getProductList, getSearchProduct } from "../services/productService"
 
 export const loadProductList = async(page:number, size =20) => {
     try{
@@ -22,3 +22,17 @@ export const searchProduct =async(searchText:string) => {
         throw error;
     }
 }
+
+export const loadProductDetails = async(id:number) => {
+    try{
+        console.log('Action > id:', id);
+        const data = await getProductDetail(id);
+        console.log('Action > product detail data: ', data);
+        return data;
+    } catch(error) {
+        // console.log('error:', error);
+        console.error('Action > error:', error);
+        throw error;
+    }
+
+};
