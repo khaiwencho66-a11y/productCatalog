@@ -4,7 +4,9 @@ RN version 0.83.9
 node version 20.19.4
 
 -using React Native CLI to create.
--use "npm install" to install dependencies and use "npx react-native run-android" to run.
+# How to run the app
+-use "npm install" to install dependencies
+-use "npx react-native run-android" to run. OR use "npm start" first to open Metro and then use "npx react-native run-android" to run.
 
 # Product Catalog App:
 1. Product List
@@ -19,6 +21,11 @@ node version 20.19.4
 6. need to solve issue on ScrollView cannot use together with FlatList (Product Detail line 128-151). Cause issue of:
 VirtualizedLists should never be nested inside plain ScrollViews with the same orientation because it can break windowing and other functionality - use another VirtualizedList-backed container instead. Error Stack: ...
 
+# Testing Bug
+1. There is a bug where after search products name, and refresh back to by default 20 list, can't scroll down to load more products. Find out solution already, but can't change now.
+2. Error issue on bottom show:  Cause issue of:
+VirtualizedLists should never be nested inside plain ScrollViews with the same orientation because it can break windowing and other functionality - use another VirtualizedList-backed container instead. Error Stack: ... (In ProductDetail.tsx, cause by incorrect way using using the ScrollViews & FlatList)
+
 # Function/Feature
 1. Product List
 -able to search by product name, and need to click on the search button
@@ -30,7 +37,36 @@ VirtualizedLists should never be nested inside plain ScrollViews with the same o
 -have a back button to go back to Product List
 -display product image and product detail such as title, price, description, specification (i pcik some from the detail: availability status, stock, brand, weight, dimension), Service (pick: warranty info, shipping info, return policy), rating
 
-# AI usage
+# stack used
+-React Native Cli: to create and run the project
+-React Native with TypeSript
+-React Navigation: use to nagivate from a page to another page
+-FlatList: to display data list
+-FastImage: use for display image
+-fetch(): use for integrate API call
+-phone to test: I use my own phone due to Android Studio may running slow in my laptop.
+
+# architecture decision
+I have few separate folder for file to easy to manage and finding like actions, assets, navigation, screens, and services.
+
+actions: 
+-to handle some function before or after calling the API from services. Eg: like calculation or display specific data only.
+
+assets:
+-to store all those images
+
+naigation:
+-to separate the folder specific for navigation related
+-MainStack > Stack Navigator to handle overall screen flow
+-BottomNavBar: a bottom navigation bar for switch to go for a section screen (currently only have one: Products)
+
+screens:
+-all screen created in this folder, easy to find
+
+services:
+-for service file to call api
+
+# AI usage - for research
 1. Navigator/Navigation setup at App.tsx and how the MainStack and BottomNavbar setup works
 -include file: App.tsx, MainStack.tsx, BottomNavBar
 2. on endreached use in flatlist react native
@@ -44,10 +80,11 @@ https://reactnative.dev/docs/flatlist#example
 
 https://reactnative.dev/docs/textinput
 
+icon downlaod from: https://www.flaticon.com
+
 # Working time
 -Used like 3 hours 08 min++ to finish. 
 -Init setup like create project, then use above 3 hours+ to setting environment due to first time implement in own laptop
-
 
 # ------------------------------
 # DEFAULT GENERATED NOTE
